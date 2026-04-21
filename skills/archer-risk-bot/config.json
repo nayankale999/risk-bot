@@ -1,0 +1,355 @@
+{
+  "skill": {
+    "name": "archer-risk-bot",
+    "version": "1.0.0",
+    "description": "RSA Archer Risk Management Bot for managing Risks, Controls, and Issues",
+    "author": "Risk Management Team"
+  },
+  "archer": {
+    "base_url": "https://your-archer-instance.com/RSAArcher",
+    "api_path": "/platformapi/core",
+    "instance_name": "{{ARCHER_INSTANCE}}",
+    "authentication": {
+      "type": "session",
+      "login_endpoint": "/security/login",
+      "logout_endpoint": "/security/logout",
+      "username": "{{ARCHER_USERNAME}}",
+      "password": "{{ARCHER_PASSWORD}}",
+      "user_domain": ""
+    },
+    "applications": {
+      "risk": {
+        "name": "Risk Register",
+        "guid": "{{RISK_APP_GUID}}",
+        "level_id": "{{RISK_LEVEL_ID}}"
+      },
+      "control": {
+        "name": "Controls Library",
+        "guid": "{{CONTROL_APP_GUID}}",
+        "level_id": "{{CONTROL_LEVEL_ID}}"
+      },
+      "issue": {
+        "name": "Issues Management",
+        "guid": "{{ISSUE_APP_GUID}}",
+        "level_id": "{{ISSUE_LEVEL_ID}}"
+      }
+    }
+  },
+  "field_mappings": {
+    "risk": {
+      "risk_id": {
+        "field_id": "{{RISK_ID_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Risk ID"
+      },
+      "risk_name": {
+        "field_id": "{{RISK_NAME_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Risk Name"
+      },
+      "risk_description": {
+        "field_id": "{{RISK_DESCRIPTION_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Risk Description"
+      },
+      "risk_category": {
+        "field_id": "{{RISK_CATEGORY_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Risk Category",
+        "values": {
+          "operational": "{{OPERATIONAL_RISK_VALUE_ID}}",
+          "credit": "{{CREDIT_RISK_VALUE_ID}}",
+          "market": "{{MARKET_RISK_VALUE_ID}}",
+          "liquidity": "{{LIQUIDITY_RISK_VALUE_ID}}",
+          "compliance": "{{COMPLIANCE_RISK_VALUE_ID}}",
+          "strategic": "{{STRATEGIC_RISK_VALUE_ID}}",
+          "technology": "{{TECHNOLOGY_RISK_VALUE_ID}}",
+          "cyber": "{{CYBER_RISK_VALUE_ID}}",
+          "reputational": "{{REPUTATIONAL_RISK_VALUE_ID}}"
+        }
+      },
+      "business_unit": {
+        "field_id": "{{BUSINESS_UNIT_FIELD_ID}}",
+        "type": 9,
+        "display_name": "Business Unit"
+      },
+      "risk_owner": {
+        "field_id": "{{RISK_OWNER_FIELD_ID}}",
+        "type": 9,
+        "display_name": "Risk Owner"
+      },
+      "inherent_likelihood": {
+        "field_id": "{{INHERENT_LIKELIHOOD_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Inherent Likelihood",
+        "values": {
+          "very_high": "{{VERY_HIGH_LIKELIHOOD_VALUE_ID}}",
+          "high": "{{HIGH_LIKELIHOOD_VALUE_ID}}",
+          "medium": "{{MEDIUM_LIKELIHOOD_VALUE_ID}}",
+          "low": "{{LOW_LIKELIHOOD_VALUE_ID}}",
+          "very_low": "{{VERY_LOW_LIKELIHOOD_VALUE_ID}}"
+        }
+      },
+      "inherent_impact": {
+        "field_id": "{{INHERENT_IMPACT_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Inherent Impact",
+        "values": {
+          "critical": "{{CRITICAL_IMPACT_VALUE_ID}}",
+          "high": "{{HIGH_IMPACT_VALUE_ID}}",
+          "medium": "{{MEDIUM_IMPACT_VALUE_ID}}",
+          "low": "{{LOW_IMPACT_VALUE_ID}}",
+          "minimal": "{{MINIMAL_IMPACT_VALUE_ID}}"
+        }
+      },
+      "inherent_risk_rating": {
+        "field_id": "{{INHERENT_RISK_RATING_FIELD_ID}}",
+        "type": 16,
+        "display_name": "Inherent Risk Rating"
+      },
+      "residual_likelihood": {
+        "field_id": "{{RESIDUAL_LIKELIHOOD_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Residual Likelihood"
+      },
+      "residual_impact": {
+        "field_id": "{{RESIDUAL_IMPACT_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Residual Impact"
+      },
+      "residual_risk_rating": {
+        "field_id": "{{RESIDUAL_RISK_RATING_FIELD_ID}}",
+        "type": 16,
+        "display_name": "Residual Risk Rating"
+      },
+      "risk_status": {
+        "field_id": "{{RISK_STATUS_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Risk Status",
+        "values": {
+          "draft": "{{DRAFT_STATUS_VALUE_ID}}",
+          "active": "{{ACTIVE_STATUS_VALUE_ID}}",
+          "closed": "{{CLOSED_STATUS_VALUE_ID}}",
+          "archived": "{{ARCHIVED_STATUS_VALUE_ID}}"
+        }
+      }
+    },
+    "control": {
+      "control_id": {
+        "field_id": "{{CONTROL_ID_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Control ID"
+      },
+      "control_name": {
+        "field_id": "{{CONTROL_NAME_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Control Name"
+      },
+      "control_description": {
+        "field_id": "{{CONTROL_DESCRIPTION_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Control Description"
+      },
+      "control_type": {
+        "field_id": "{{CONTROL_TYPE_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Control Type",
+        "values": {
+          "preventive": "{{PREVENTIVE_TYPE_VALUE_ID}}",
+          "detective": "{{DETECTIVE_TYPE_VALUE_ID}}",
+          "corrective": "{{CORRECTIVE_TYPE_VALUE_ID}}"
+        }
+      },
+      "control_owner": {
+        "field_id": "{{CONTROL_OWNER_FIELD_ID}}",
+        "type": 9,
+        "display_name": "Control Owner"
+      },
+      "control_frequency": {
+        "field_id": "{{CONTROL_FREQUENCY_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Control Frequency",
+        "values": {
+          "continuous": "{{CONTINUOUS_FREQ_VALUE_ID}}",
+          "daily": "{{DAILY_FREQ_VALUE_ID}}",
+          "weekly": "{{WEEKLY_FREQ_VALUE_ID}}",
+          "monthly": "{{MONTHLY_FREQ_VALUE_ID}}",
+          "quarterly": "{{QUARTERLY_FREQ_VALUE_ID}}",
+          "annually": "{{ANNUALLY_FREQ_VALUE_ID}}"
+        }
+      },
+      "automation_level": {
+        "field_id": "{{AUTOMATION_LEVEL_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Automation Level",
+        "values": {
+          "manual": "{{MANUAL_VALUE_ID}}",
+          "semi_automated": "{{SEMI_AUTOMATED_VALUE_ID}}",
+          "automated": "{{AUTOMATED_VALUE_ID}}"
+        }
+      },
+      "design_effectiveness": {
+        "field_id": "{{DESIGN_EFFECTIVENESS_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Design Effectiveness",
+        "values": {
+          "adequate": "{{ADEQUATE_VALUE_ID}}",
+          "inadequate": "{{INADEQUATE_VALUE_ID}}",
+          "not_assessed": "{{NOT_ASSESSED_VALUE_ID}}"
+        }
+      },
+      "operating_effectiveness": {
+        "field_id": "{{OPERATING_EFFECTIVENESS_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Operating Effectiveness",
+        "values": {
+          "effective": "{{EFFECTIVE_VALUE_ID}}",
+          "ineffective": "{{INEFFECTIVE_VALUE_ID}}",
+          "needs_improvement": "{{NEEDS_IMPROVEMENT_VALUE_ID}}",
+          "not_tested": "{{NOT_TESTED_VALUE_ID}}"
+        }
+      },
+      "control_status": {
+        "field_id": "{{CONTROL_STATUS_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Control Status",
+        "values": {
+          "draft": "{{DRAFT_CTRL_STATUS_VALUE_ID}}",
+          "active": "{{ACTIVE_CTRL_STATUS_VALUE_ID}}",
+          "inactive": "{{INACTIVE_CTRL_STATUS_VALUE_ID}}",
+          "retired": "{{RETIRED_CTRL_STATUS_VALUE_ID}}"
+        }
+      },
+      "related_risks": {
+        "field_id": "{{RELATED_RISKS_FIELD_ID}}",
+        "type": 9,
+        "display_name": "Related Risks"
+      }
+    },
+    "issue": {
+      "issue_id": {
+        "field_id": "{{ISSUE_ID_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Issue ID"
+      },
+      "issue_title": {
+        "field_id": "{{ISSUE_TITLE_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Issue Title"
+      },
+      "issue_description": {
+        "field_id": "{{ISSUE_DESCRIPTION_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Issue Description"
+      },
+      "issue_priority": {
+        "field_id": "{{ISSUE_PRIORITY_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Issue Priority",
+        "values": {
+          "critical": "{{CRITICAL_PRIORITY_VALUE_ID}}",
+          "high": "{{HIGH_PRIORITY_VALUE_ID}}",
+          "medium": "{{MEDIUM_PRIORITY_VALUE_ID}}",
+          "low": "{{LOW_PRIORITY_VALUE_ID}}"
+        }
+      },
+      "issue_owner": {
+        "field_id": "{{ISSUE_OWNER_FIELD_ID}}",
+        "type": 9,
+        "display_name": "Issue Owner"
+      },
+      "due_date": {
+        "field_id": "{{DUE_DATE_FIELD_ID}}",
+        "type": 3,
+        "display_name": "Due Date"
+      },
+      "issue_status": {
+        "field_id": "{{ISSUE_STATUS_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Issue Status",
+        "values": {
+          "open": "{{OPEN_STATUS_VALUE_ID}}",
+          "in_progress": "{{IN_PROGRESS_STATUS_VALUE_ID}}",
+          "pending_validation": "{{PENDING_VALIDATION_STATUS_VALUE_ID}}",
+          "closed": "{{CLOSED_ISSUE_STATUS_VALUE_ID}}"
+        }
+      },
+      "issue_source": {
+        "field_id": "{{ISSUE_SOURCE_FIELD_ID}}",
+        "type": 4,
+        "display_name": "Issue Source",
+        "values": {
+          "internal_audit": "{{INTERNAL_AUDIT_VALUE_ID}}",
+          "external_audit": "{{EXTERNAL_AUDIT_VALUE_ID}}",
+          "self_identified": "{{SELF_IDENTIFIED_VALUE_ID}}",
+          "regulatory": "{{REGULATORY_VALUE_ID}}",
+          "incident": "{{INCIDENT_VALUE_ID}}"
+        }
+      },
+      "remediation_plan": {
+        "field_id": "{{REMEDIATION_PLAN_FIELD_ID}}",
+        "type": 1,
+        "display_name": "Remediation Plan"
+      },
+      "related_controls": {
+        "field_id": "{{RELATED_CONTROLS_FIELD_ID}}",
+        "type": 9,
+        "display_name": "Related Controls"
+      },
+      "related_risks": {
+        "field_id": "{{ISSUE_RELATED_RISKS_FIELD_ID}}",
+        "type": 9,
+        "display_name": "Related Risks"
+      }
+    }
+  },
+  "reference_data": {
+    "business_units": {
+      "trading_desk": "{{TRADING_DESK_CONTENT_ID}}",
+      "trading": "{{TRADING_DESK_CONTENT_ID}}",
+      "retail_banking": "{{RETAIL_BANKING_CONTENT_ID}}",
+      "retail": "{{RETAIL_BANKING_CONTENT_ID}}",
+      "commercial_banking": "{{COMMERCIAL_BANKING_CONTENT_ID}}",
+      "commercial": "{{COMMERCIAL_BANKING_CONTENT_ID}}",
+      "wealth_management": "{{WEALTH_MANAGEMENT_CONTENT_ID}}",
+      "wealth": "{{WEALTH_MANAGEMENT_CONTENT_ID}}",
+      "operations": "{{OPERATIONS_CONTENT_ID}}",
+      "ops": "{{OPERATIONS_CONTENT_ID}}",
+      "information_technology": "{{IT_CONTENT_ID}}",
+      "it": "{{IT_CONTENT_ID}}",
+      "technology": "{{IT_CONTENT_ID}}",
+      "compliance": "{{COMPLIANCE_CONTENT_ID}}",
+      "finance": "{{FINANCE_CONTENT_ID}}",
+      "treasury": "{{TREASURY_CONTENT_ID}}",
+      "human_resources": "{{HR_CONTENT_ID}}",
+      "hr": "{{HR_CONTENT_ID}}",
+      "legal": "{{LEGAL_CONTENT_ID}}"
+    }
+  },
+  "settings": {
+    "require_confirmation": true,
+    "confirmation_keywords": ["yes", "confirm", "proceed", "ok", "approved"],
+    "rejection_keywords": ["no", "cancel", "abort", "stop", "reject"],
+    "default_page_size": 10,
+    "max_page_size": 1000,
+    "timeout_seconds": 30,
+    "session_timeout_minutes": 30,
+    "retry_attempts": 3,
+    "retry_delay_ms": 1000
+  },
+  "logging": {
+    "level": "info",
+    "include_timestamps": true,
+    "include_user_id": true,
+    "include_content_ids": true,
+    "audit_mutations": true
+  },
+  "environment": {
+    "variables": [
+      "ARCHER_BASE_URL",
+      "ARCHER_INSTANCE",
+      "ARCHER_USERNAME",
+      "ARCHER_PASSWORD"
+    ]
+  }
+}

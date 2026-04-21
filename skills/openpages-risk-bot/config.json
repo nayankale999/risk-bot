@@ -1,0 +1,142 @@
+{
+  "skill": {
+    "name": "openpages-risk-bot",
+    "version": "1.0.0",
+    "description": "IBM OpenPages Risk Management Bot for managing Risks, Controls, and Issues",
+    "author": "Risk Management Team"
+  },
+  "openpages": {
+    "version": "9.x",
+    "base_url": "https://your-openpages-instance.com",
+    "api_path": "/opgrc/api/v2",
+    "oauth": {
+      "token_url": "https://your-openpages-instance.com/oauth2/token",
+      "authorization_url": "https://your-openpages-instance.com/oauth2/authorize",
+      "client_id": "{{OPENPAGES_CLIENT_ID}}",
+      "client_secret": "{{OPENPAGES_CLIENT_SECRET}}",
+      "scope": "openid opgrc_api",
+      "grant_type": "client_credentials"
+    },
+    "object_types": {
+      "risk": "SOXRisk",
+      "control": "SOXControl",
+      "issue": "SOXIssue"
+    }
+  },
+  "settings": {
+    "require_confirmation": true,
+    "confirmation_keywords": ["yes", "confirm", "proceed", "ok", "approved"],
+    "rejection_keywords": ["no", "cancel", "abort", "stop", "reject"],
+    "default_page_size": 10,
+    "max_page_size": 100,
+    "timeout_seconds": 30,
+    "retry_attempts": 3,
+    "retry_delay_ms": 1000
+  },
+  "field_mappings": {
+    "risk": {
+      "name": "Name",
+      "description": "Description",
+      "category": "Resource ID:Risk Category",
+      "business_entity": "Resource ID:Business Entity",
+      "owner": "Resource ID:Risk Owner",
+      "severity": "OPSS-Risk:Severity",
+      "likelihood": "OPSS-Risk:Likelihood",
+      "impact": "OPSS-Risk:Impact",
+      "status": "OPSS-Risk:Status",
+      "inherent_rating": "OPSS-Risk:Inherent Risk Rating",
+      "residual_rating": "OPSS-Risk:Residual Risk Rating"
+    },
+    "control": {
+      "control_id": "Control ID",
+      "name": "Name",
+      "description": "Description",
+      "type": "OPSS-Ctrl:Control Type",
+      "owner": "Resource ID:Control Owner",
+      "effectiveness": "OPSS-Ctrl:Operating Effectiveness",
+      "design_effectiveness": "OPSS-Ctrl:Design Effectiveness",
+      "frequency": "OPSS-Ctrl:Frequency",
+      "automation": "OPSS-Ctrl:Automation",
+      "status": "OPSS-Ctrl:Status"
+    },
+    "issue": {
+      "issue_id": "Issue ID",
+      "name": "Name",
+      "description": "Description",
+      "priority": "OPSS-Issue:Priority",
+      "owner": "Resource ID:Issue Owner",
+      "due_date": "OPSS-Issue:Due Date",
+      "status": "OPSS-Issue:Status",
+      "source": "OPSS-Issue:Source",
+      "remediation_plan": "OPSS-Issue:Remediation Plan"
+    }
+  },
+  "enum_values": {
+    "severity": ["Critical", "High", "Medium", "Low"],
+    "likelihood": ["Almost Certain", "Likely", "Possible", "Unlikely", "Rare"],
+    "impact": ["Catastrophic", "Major", "Moderate", "Minor", "Insignificant"],
+    "risk_status": ["Draft", "Active", "Closed", "Archived"],
+    "control_type": ["Preventive", "Detective", "Corrective"],
+    "effectiveness": ["Effective", "Ineffective", "Needs Improvement", "Not Tested"],
+    "design_effectiveness": ["Adequate", "Inadequate", "Not Assessed"],
+    "frequency": ["Continuous", "Daily", "Weekly", "Monthly", "Quarterly", "Annually", "Ad-hoc"],
+    "automation": ["Manual", "Semi-Automated", "Automated"],
+    "control_status": ["Draft", "Active", "Inactive", "Retired"],
+    "priority": ["Critical", "High", "Medium", "Low"],
+    "issue_status": ["Open", "In Progress", "Pending Validation", "Closed"],
+    "issue_source": ["Internal Audit", "External Audit", "Self-Identified", "Regulatory", "Incident"]
+  },
+  "business_entities": {
+    "aliases": {
+      "trading": "Trading Desk",
+      "trading desk": "Trading Desk",
+      "retail": "Retail Banking",
+      "retail banking": "Retail Banking",
+      "commercial": "Commercial Banking",
+      "commercial banking": "Commercial Banking",
+      "wealth": "Wealth Management",
+      "wealth management": "Wealth Management",
+      "operations": "Operations",
+      "ops": "Operations",
+      "it": "Information Technology",
+      "technology": "Information Technology",
+      "compliance": "Compliance",
+      "finance": "Finance",
+      "treasury": "Treasury",
+      "hr": "Human Resources",
+      "human resources": "Human Resources",
+      "legal": "Legal"
+    }
+  },
+  "risk_categories": {
+    "aliases": {
+      "operational": "Operational Risk",
+      "credit": "Credit Risk",
+      "market": "Market Risk",
+      "liquidity": "Liquidity Risk",
+      "compliance": "Compliance Risk",
+      "regulatory": "Compliance Risk",
+      "strategic": "Strategic Risk",
+      "reputational": "Reputational Risk",
+      "technology": "Technology Risk",
+      "cyber": "Cyber Risk",
+      "model": "Model Risk",
+      "third party": "Third Party Risk",
+      "vendor": "Third Party Risk"
+    }
+  },
+  "logging": {
+    "level": "info",
+    "include_timestamps": true,
+    "include_user_id": true,
+    "include_object_ids": true,
+    "audit_mutations": true
+  },
+  "environment": {
+    "variables": [
+      "OPENPAGES_BASE_URL",
+      "OPENPAGES_CLIENT_ID",
+      "OPENPAGES_CLIENT_SECRET"
+    ]
+  }
+}
